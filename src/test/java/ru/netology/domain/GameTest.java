@@ -4,9 +4,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import ru.netology.repository.Game;
 
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class GameTest {
     private Game game = new Game();
@@ -17,22 +16,11 @@ class GameTest {
 
     @BeforeEach
     void shouldRegisterAllPlayers() {
-        game.registerAll(List.of(player1, player2, player3, player4));
-    }
+        game.register(player1);
+        game.register(player2);
+        game.register(player3);
+        game.register(player4);
 
-    @Test
-    void shouldFindAllRegisteredPlayers() {
-        assertEquals(List.of(player1, player2, player3, player4), game.findAll());
-    }
-
-    @Test
-    void shouldFindByNameWhenRegister() {
-        assertEquals(player3, game.findByName("Pasha"));
-    }
-
-    @Test
-    void shouldReturnNullWhenNotRegister() {
-        assertNull(game.findByName("Kostya"));
     }
 
     @Test
